@@ -344,7 +344,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 - **Issues:** [GitHub Issues](https://github.com/yourusername/spring-boot-azure-app-configuration/issues)
 - **Discussions:** [GitHub Discussions](https://github.com/yourusername/spring-boot-azure-app-configuration/discussions)
-- **Email:** your.email@example.com
+- **Email:** dilsecodie@gmail.com
 
 ---
 
