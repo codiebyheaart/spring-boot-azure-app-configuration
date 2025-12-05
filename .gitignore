@@ -1,0 +1,141 @@
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# Gradle (if re-added in future)
+.gradle/
+build/
+gradle-app.setting
+!gradle-wrapper.jar
+.gradletasknamecache
+
+# Spring Boot
+spring-boot-devtools.properties
+
+# Eclipse
+.classpath
+.project
+.settings/
+bin/
+.metadata
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.loadpath
+.recommenders
+
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+.idea_modules/
+
+# VS Code
+.vscode/
+.code-workspace
+
+# NetBeans
+nbproject/private/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# Logs
+logs/
+*.log
+*.log.*
+*.gz
+*.zip
+
+# Application-specific
+application.properties
+application-*.properties
+!application.properties.example
+bootstrap.yml
+bootstrap-*.yml
+!bootstrap.yml.example
+
+# Sensitive files
+*.key
+*.pem
+*.p12
+*.jks
+.env
+.env.*
+
+# Compiled class files
+*.class
+
+# Package Files
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+!.mvn/wrapper/maven-wrapper.jar
+
+# JVM crash logs
+hs_err_pid*
+replay_pid*
+
+# Temporary files
+*.tmp
+*.temp
+
+# Node modules (if frontend is added)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Coverage and test reports
+*.coverage
+coverage/
+.nyc_output/
+test-results/
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Cache
+.cache/
+*.cache
