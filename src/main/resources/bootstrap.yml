@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: azure-appconfig-demo
+
+  cloud:
+    azure:
+      appconfiguration:
+        stores:
+          - connection-string: Endpoint=https://pankajconfigstore.azconfig.io;Id=Y9iT;Secret=eIlPXnmzysGkZwq6z0KP3wFj3UTzNatz2BmvT87QckKLMB1hZCnaJQQJ99BLACYeBjFTl1JRAAACAZAC4bSG
+logging:
+  level:
+    com.azure.spring.cloud.appconfiguration: TRACE
+    com.azure.data.appconfiguration: DEBUG
