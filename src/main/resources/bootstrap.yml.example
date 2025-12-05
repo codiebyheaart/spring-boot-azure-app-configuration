@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: azure-appconfig-demo
+
+  cloud:
+    azure:
+      appconfiguration:
+        stores:
+          # IMPORTANT: Replace with your actual Azure App Configuration connection string
+          # Get this from: Azure Portal > App Configuration > Access Keys
+          - connection-string: ${AZURE_APPCONFIG_CONNECTION_STRING:Endpoint=https://YOUR-CONFIG-STORE.azconfig.io;Id=XXXX;Secret=XXXX}
+      credential:
+        # Set to false for local development to avoid Azure credential errors
+        managed-identity-enabled: false
+
+logging:
+  level:
+    com.azure.spring.cloud.appconfiguration: TRACE
+    com.azure.data.appconfiguration: DEBUG
