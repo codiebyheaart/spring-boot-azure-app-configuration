@@ -83,11 +83,17 @@ logs/
 *.zip
 
 # Application-specific
-application.properties
-application-*.properties
+# Ignore environment-specific files with profiles (dev, prod, staging, etc.)
+application-dev.properties
+application-prod.properties
+application-staging.properties
+application-local.properties
+bootstrap-dev.yml
+bootstrap-prod.yml
+bootstrap-staging.yml
+bootstrap-local.yml
+# Keep template files that can be committed
 !application.properties.example
-bootstrap.yml
-bootstrap-*.yml
 !bootstrap.yml.example
 
 # Sensitive files
