@@ -25,15 +25,14 @@ jobs:
           username: ${{ fromJson(secrets.AZURE_CREDENTIALS).clientId }}
           password: ${{ fromJson(secrets.AZURE_CREDENTIALS).clientSecret }}
 
-      - name: Disable Buildx (force normal Docker build)
+      - name: Build Docker Image
         run: |
-          docker buildx rm builder || true
-          docker buildx stop || true
-          echo "Buildx disabled, using classic docker build"
-
-      - name: Build Docker Image using classic docker
-        run: |
-          docker build -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/springboot-config:v1 .
+          echo "Workspace files:"
+          ls -R .
+          docker build \
+            -f spring-boot-azure-app-configuration/Dockerfile \
+            -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/springboot-config:v1 \
+            spring-boot-azure-app-configuration
 
       - name: Push Docker Image
         run: |
