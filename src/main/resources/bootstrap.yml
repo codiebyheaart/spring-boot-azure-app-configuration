@@ -6,7 +6,7 @@ spring:
     azure:
       appconfiguration:
         stores:
-          - connection-string: Endpoint=https://pankajconfigstore.azconfig.io;Id=Y9iT;Secret=eIlPXnmzysGkZwq6z0KP3wFj3UTzNatz2BmvT87QckKLMB1hZCnaJQQJ99BLACYeBjFTl1JRAAACAZAC4bSG
+          - connection-string: ${APP_CONFIG_CONNECTION_STRING}
 logging:
   level:
     com.azure.spring.cloud.appconfiguration: TRACE
