@@ -8,28 +8,19 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
+      - uses: actions/checkout@v3
+      
       - name: Azure Login
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-      - name: Docker Login to ACR
+      
+      - name: ACR Login
+        run: az acr login --name nindia
+      
+      - name: Build and Push
         run: |
-          echo "${{ fromJson(secrets.AZURE_CREDENTIALS).clientSecret }}" \
-            | docker login https://nindia.azurecr.io \
-              -u "${{ fromJson(secrets.AZURE_CREDENTIALS).clientId }}" --password-stdin
-
-
-      - name: Build Docker Image
-        run: |
-          echo "Workspace files:"
-          ls -R .
-          docker build -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/springboot-config:v1 .
-      - name: Push Docker Image
-        run: |
-          docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/springboot-config:v1
+          docker build -t nindia.azurecr.io/springboot-config:v1 .
+          docker push nindia.azurecr.io/springboot-config:v1
