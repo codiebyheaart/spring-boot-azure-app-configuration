@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout code
         uses: actions/checkout@v3
 
       - name: Azure Login
@@ -18,21 +18,17 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      - name: Docker Login to ACR
-        uses: azure/docker-login@v1
-        with:
-          login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
-          username: ${{ fromJson(secrets.AZURE_CREDENTIALS).clientId }}
-          password: ${{ fromJson(secrets.AZURE_CREDENTIALS).clientSecret }}
+      - name: Docker Login (NO BUILDX)
+        run: |
+          echo "Logging into ACR..."
+          echo ${{ fromJson(secrets.AZURE_CREDENTIALS).clientSecret }} | docker login ${{ secrets.REGISTRY_LOGIN_SERVER }} \
+            -u ${{ fromJson(secrets.AZURE_CREDENTIALS).clientId }} --password-stdin
 
-      - name: Build Docker Image
+      - name: Build Docker Image (classic builder)
         run: |
           echo "Workspace files:"
           ls -R .
-          docker build \
-            -f spring-boot-azure-app-configuration/Dockerfile \
-            -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/springboot-config:v1 \
-            spring-boot-azure-app-configuration
+          docker build -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/springboot-config:v1 .
 
       - name: Push Docker Image
         run: |
