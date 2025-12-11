@@ -18,10 +18,12 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      - name: Docker Login to ACR (Service Principal)
+      - name: Docker Login to ACR
         run: |
-          echo "${{ fromJson(secrets.AZURE_CREDENTIALS).clientSecret }}" | docker login ${{ secrets.REGISTRY_LOGIN_SERVER }} \
-            -u "${{ fromJson(secrets.AZURE_CREDENTIALS).clientId }}" --password-stdin
+          echo "${{ fromJson(secrets.AZURE_CREDENTIALS).clientSecret }}" \
+            | docker login https://nindia.azurecr.io \
+              -u "${{ fromJson(secrets.AZURE_CREDENTIALS).clientId }}" --password-stdin
+
 
       - name: Build Docker Image
         run: |
