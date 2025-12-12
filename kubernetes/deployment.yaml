@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-config-app
+  labels:
+    app: spring-config-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring-config-app
+  template:
+    metadata:
+      labels:
+        app: spring-config-app
+    spec:
+      containers:
+        - name: spring-config-container
+          image: nindia.azurecr.io/springboot-config:v1
+          ports:
+            - containerPort: 8080
+          env:
+            - name: APP_CONFIG_CONNECTION_STRING
+              valueFrom:
+                secretKeyRef:
+                  name: appconfig-secret
+                  key: APP_CONFIG_CONNECTION_STRING
